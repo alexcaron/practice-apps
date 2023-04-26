@@ -1,12 +1,12 @@
 import React from "react";
-import axios from "axios";
+import Word from "./word.jsx";
 
 const WordList = ({ words }) => {
 
   return (
     <ul>
-      {words.map((word) => {
-        return <li><span>{word.word}</span> - <span>{word.definition}</span></li>
+      {words.map((word, index) => {
+        return <Word key={ index } word={ word } />
       })}
     </ul>
   );
