@@ -13,14 +13,19 @@ const entrySchema = new Schema({
 
 const Entry = mongoose.model('Entry', entrySchema);
 
-const initialWords = [
-  {word: 'germane', definition: 'relevant to a subject under consideration'},
-  {word: 'sanguine', definition: 'optimistic or positive, especially in an apparently bad or difficult situation'},
-  {word: 'clandestine', definition: 'kept secret or done secretively, especially because illicit'},
-  {word: 'tacit', definition: 'understood or implied without being stated'},
-  {word: 'tacit2', definition: 'understood or implied without being stated'}
-];
+const getAllEntries = () => {
+  return Entry.find({});
+}
 
-Entry.insertMany(initialWords);
+module.exports.getAllEntries = getAllEntries;
 
-module.exports.Entry = Entry;
+// const initialWords = [
+//   {word: 'germane', definition: 'relevant to a subject under consideration'},
+//   {word: 'sanguine', definition: 'optimistic or positive, especially in an apparently bad or difficult situation'},
+//   {word: 'clandestine', definition: 'kept secret or done secretively, especially because illicit'},
+//   {word: 'tacit', definition: 'understood or implied without being stated'},
+//   {word: 'tacit2', definition: 'understood or implied without being stated'}
+// ];
+
+// Entry.insertMany(initialWords);
+

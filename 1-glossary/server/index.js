@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { Entry } = require(path.join(__dirname, "./db.js"));
+const { getAllEntries } = require(path.join(__dirname, "./db.js"));
 
 const app = express();
 
@@ -13,17 +13,14 @@ app.get('/words', function(req, res) {
   // get all of the words from the database and return them as array
   // hardcoded here for now
 
-  const words = [
-    {word: 'germane', definition: 'relevant to a subject under consideration'},
-    {word: 'sanguine', definition: 'optimistic or positive, especially in an apparently bad or difficult situation'},
-    {word: 'clandestine', definition: 'kept secret or done secretively, especially because illicit'},
-    {word: 'tacit', definition: 'understood or implied without being stated'},
-  ];
-
-  Entry.find({}).
-  then((entries) => {
+  getAllEntries()
+  .then((entries) => {
     res.send(entries);
-  });
+  })
+  .catch((err) => {
+    console.log("there was an issue getting the entries");
+    res.sendStatus(500);
+  })
 });
 
 /****
