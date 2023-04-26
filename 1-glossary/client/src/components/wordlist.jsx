@@ -12,6 +12,4 @@ const WordList = ({ words }) => {
   );
 };
 
-
-
 export default WordList;
