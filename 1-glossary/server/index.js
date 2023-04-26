@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { getAllEntries } = require(path.join(__dirname, "./db.js"));
+const { getAllEntries, addEntry } = require(path.join(__dirname, "./db.js"));
 
 const app = express();
 
@@ -10,9 +10,6 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
 app.get('/words', function(req, res) {
-  // get all of the words from the database and return them as array
-  // hardcoded here for now
-
   getAllEntries()
   .then((entries) => {
     res.send(entries);
@@ -22,6 +19,17 @@ app.get('/words', function(req, res) {
     res.sendStatus(500);
   })
 });
+
+app.post('/words', function(req, res) {
+  addEntry(req.body)
+  .then(() => {
+    res.send(201);
+  })
+  .catch((err) => {
+    res.send(err);
+  })
+
+})
 
 /****
  *

@@ -17,7 +17,12 @@ const getAllEntries = () => {
   return Entry.find({});
 }
 
+const addEntry = (entry) => {
+  return Entry.create(entry);
+}
+
 module.exports.getAllEntries = getAllEntries;
+module.exports.addEntry = addEntry;
 
 // const initialWords = [
 //   {word: 'germane', definition: 'relevant to a subject under consideration'},
