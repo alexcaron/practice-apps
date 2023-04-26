@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const { Entry } = require(path.join(__dirname, "./db.js"));
 
 const app = express();
 
@@ -18,7 +19,11 @@ app.get('/words', function(req, res) {
     {word: 'clandestine', definition: 'kept secret or done secretively, especially because illicit'},
     {word: 'tacit', definition: 'understood or implied without being stated'},
   ];
-  res.send(words);
+
+  Entry.find({}).
+  then((entries) => {
+    res.send(entries);
+  });
 });
 
 /****
