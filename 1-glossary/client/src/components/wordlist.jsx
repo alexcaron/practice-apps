@@ -1,13 +1,7 @@
 import React from "react";
+import axios from "axios";
 
-const WordList = () => {
-
-  // hardcode this data for now
-  const words = [
-    {word: 'germane', definition: 'relevant to a subject under consideration'},
-    {word: 'sanguine', definition: 'optimistic or positive, especially in an apparently bad or difficult situation'},
-    {word: 'clandestine', definition: 'kept secret or done secretively, especially because illicit'},
-  ];
+const WordList = ({ words }) => {
 
   return (
     <ul>

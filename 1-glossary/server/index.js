@@ -8,6 +8,18 @@ const app = express();
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
+app.get('/words', function(req, res) {
+  // get all of the words from the database and return them as array
+  // hardcoded here for now
+
+  const words = [
+    {word: 'germane', definition: 'relevant to a subject under consideration'},
+    {word: 'sanguine', definition: 'optimistic or positive, especially in an apparently bad or difficult situation'},
+    {word: 'clandestine', definition: 'kept secret or done secretively, especially because illicit'},
+    {word: 'tacit', definition: 'understood or implied without being stated'},
+  ];
+  res.send(words);
+});
 
 /****
  *
