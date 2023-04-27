@@ -9,19 +9,18 @@ const App = () => {
   const [words, setWords] = useState([]);
   const [displayWords, setDisplayWords] = useState([]);
 
+  const updateWordLists = (response) => {
+    setWords(response.data);
+    setDisplayWords(response.data);
+  }
+
   useEffect(() => {
     axios.get('/words')
-    .then((wordData) => {
-      setWords(wordData.data);
-      setDisplayWords(wordData.data);
-    })
+    .then((wordData) => updateWordLists(wordData));
   }, []);
 
   const filterWords = (query) => {
-    const filteredWords = words.filter((word) => {
-      return word.word.includes(query) || word.definition.includes(query);
-    });
-    setDisplayWords(filteredWords);
+    setDisplayWords(words.filter((word) => word.word.includes(query) || word.definition.includes(query)));
   }
 
   const checkWordsFor = (word) => {
@@ -31,13 +30,8 @@ const App = () => {
   const addWord = (word, definition) => {
     const entry = { word, definition };
     axios.post('/words', entry)
-    .then(() => {
-      return axios.get('/words')
-    })
-    .then((wordData) => {
-      setWords(wordData.data);
-      setDisplayWords(wordData.data);
-    })
+    .then(() => axios.get('/words'))
+    .then((wordData) => updateWordLists(wordData))
     .catch((err) => {
       console.log("there was an error adding the word.");
     })
@@ -48,17 +42,9 @@ const App = () => {
   };
 
   const deleteWord = (id) => {
-    axios.put('/words', {
-      id: id,
-      action: 'delete'
-    })
-    .then(() => {
-      return axios.get('/words')
-    })
-    .then((wordData) => {
-      setWords(wordData.data);
-      setDisplayWords(wordData.data);
-    })
+    axios.delete('/words', { data: { id: id }})
+    .then(() => axios.get('/words'))
+    .then((wordData) => updateWordLists(wordData))
     .catch((err) => {
       console.log("there was an error deleting the word.");
     })

@@ -8,7 +8,7 @@ const AddWord = ({ checkWordsFor, addWord }) => {
       const definition = document.getElementById("def-to-add").value;
       addWord(word, definition);
     } else {
-      console.log("word already exists!");
+      alert("word already exists!");
     }
   }
   return (

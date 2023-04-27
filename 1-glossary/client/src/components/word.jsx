@@ -6,7 +6,10 @@ const Word = ({ word, edit, deleteWord }) => {
     <li>
       <span>{word.word}</span> - <span>{word.definition}</span>
       <button>Edit</button>
-      <button onClick={ () => deleteWord(word._id) }>Delete</button>
+      <button onClick={ () => {
+        console.log(word._id);
+        deleteWord(word._id);
+      }}>Delete</button>
     </li>
   );
 }
