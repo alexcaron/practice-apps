@@ -23,19 +23,16 @@ app.get('/words', function(req, res) {
 app.post('/words', function(req, res) {
   addEntry(req.body)
   .then(() => {
-    res.send(201);
+    res.sendStatus(201);
   })
   .catch((err) => {
     res.send(err);
   });
 });
 
-app.put('/words', function(req, res) {
-  if (req.body.action === 'delete') {
-    deleteEntry(req.body.id);
-    res.sendStatus(201);
-  }
-
+app.delete('/words', function(req, res) {
+  deleteEntry(req.body.id);
+  res.sendStatus(201);
 });
 /****
  *
