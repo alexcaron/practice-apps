@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const AddWord = ({ checkWordsFor, addWord }) => {
-  //const [wordExists, setWordExists] = useState(false);
   const onSubmit = () => {
     const word = document.getElementById("word-to-add").value;
     if (!checkWordsFor(word)) {
@@ -14,8 +13,7 @@ const AddWord = ({ checkWordsFor, addWord }) => {
   return (
     <div>
       <label>
-        <input id="word-to-add" name="word" />
-        <input id="def-to-add" name="definition" />
+        <input id="word-to-add" name="word" placeholder="your new word"/> - <input id="def-to-add" name="definition" placeholder="and its definition"/>
         <button name="submit" onClick={ onSubmit }>Add word</button>
       </label>
     </div>
