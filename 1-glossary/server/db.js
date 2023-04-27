@@ -21,8 +21,16 @@ const addEntry = (entry) => {
   return Entry.create(entry);
 }
 
+const deleteEntry = (id) => {
+  Entry.findById(id)
+  .then((entry) => {
+    return Entry.deleteOne(entry);
+  })
+}
+
 module.exports.getAllEntries = getAllEntries;
 module.exports.addEntry = addEntry;
+module.exports.deleteEntry = deleteEntry;
 
 // const initialWords = [
 //   {word: 'germane', definition: 'relevant to a subject under consideration'},

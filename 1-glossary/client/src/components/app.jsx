@@ -9,6 +9,14 @@ const App = () => {
   const [words, setWords] = useState([]);
   const [displayWords, setDisplayWords] = useState([]);
 
+  useEffect(() => {
+    axios.get('/words')
+    .then((wordData) => {
+      setWords(wordData.data);
+      setDisplayWords(wordData.data);
+    })
+  }, []);
+
   const filterWords = (query) => {
     const filteredWords = words.filter((word) => {
       return word.word.includes(query) || word.definition.includes(query);
@@ -35,20 +43,33 @@ const App = () => {
     })
   }
 
-  useEffect(() => {
-    axios.get('/words')
+  const editWord = (id, entry) => {
+
+  };
+
+  const deleteWord = (id) => {
+    axios.put('/words', {
+      id: id,
+      action: 'delete'
+    })
+    .then(() => {
+      return axios.get('/words')
+    })
     .then((wordData) => {
       setWords(wordData.data);
       setDisplayWords(wordData.data);
     })
-  }, []);
+    .catch((err) => {
+      console.log("there was an error deleting the word.");
+    })
+  };
 
   return (
     <div>
       <h2>Personal Word Glossary</h2>
       <Search filter={ filterWords }/>
       <AddWord checkWordsFor={ checkWordsFor } addWord= { addWord }/>
-      <WordList words={ displayWords }/>
+      <WordList words={ displayWords } edit={ editWord } deleteWord={ deleteWord }/>
     </div>
   );
 }
