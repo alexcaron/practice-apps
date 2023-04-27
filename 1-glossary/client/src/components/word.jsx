@@ -1,15 +1,19 @@
 import React from "react";
 
 const Word = ({ word, edit, deleteWord }) => {
+  const onEdit = (entry) => {
+    const word = "fake";
+    const definition = entry.definition;
+    const id = entry._id;
+    const newEntry = { id, word, definition };
+    edit(newEntry);
+  }
 
   return (
     <li>
       <span>{word.word}</span> - <span>{word.definition}</span>
-      <button>Edit</button>
-      <button onClick={ () => {
-        console.log(word._id);
-        deleteWord(word._id);
-      }}>Delete</button>
+      <button onClick={ () => onEdit(word) }>Edit</button>
+      <button onClick={ () => deleteWord(word._id) }>Delete</button>
     </li>
   );
 }

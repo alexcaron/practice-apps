@@ -28,9 +28,15 @@ const deleteEntry = (id) => {
   })
 }
 
+const editEntry = (entry) => {
+  Entry.findById(entry.id)
+  .then((currentEntry) => currentEntry.updateOne({word: entry.word, definition: entry.definition}));
+}
+
 module.exports.getAllEntries = getAllEntries;
 module.exports.addEntry = addEntry;
 module.exports.deleteEntry = deleteEntry;
+module.exports.editEntry = editEntry;
 
 // const initialWords = [
 //   {word: 'germane', definition: 'relevant to a subject under consideration'},

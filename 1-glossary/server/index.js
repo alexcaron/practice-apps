@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { getAllEntries, addEntry, deleteEntry } = require(path.join(__dirname, "./db.js"));
+const { getAllEntries, addEntry, deleteEntry, editEntry } = require(path.join(__dirname, "./db.js"));
 
 const app = express();
 
@@ -32,6 +32,12 @@ app.post('/words', function(req, res) {
 
 app.delete('/words', function(req, res) {
   deleteEntry(req.body.id);
+  res.sendStatus(201);
+});
+
+app.put('/words', function(req, res) {
+  console.log(req.body.data);
+  editEntry(req.body.data);
   res.sendStatus(201);
 });
 /****

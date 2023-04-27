@@ -37,8 +37,13 @@ const App = () => {
     })
   }
 
-  const editWord = (id, entry) => {
-
+  const editWord = (entry) => {
+    axios.put('/words', {data: entry})
+    .then(() => axios.get('/words'))
+    .then((wordData) => updateWordLists(wordData))
+    .catch((err) => {
+      console.log("there was an error updating the word.");
+    })
   };
 
   const deleteWord = (id) => {
