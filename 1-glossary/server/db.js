@@ -22,15 +22,17 @@ const addEntry = (entry) => {
 }
 
 const deleteEntry = (id) => {
-  Entry.findById(id)
+  return Entry.findById(id)
   .then((entry) => {
     return Entry.deleteOne(entry);
   })
 }
 
 const editEntry = (entry) => {
-  Entry.findById(entry.id)
-  .then((currentEntry) => currentEntry.updateOne({word: entry.word, definition: entry.definition}));
+  return Entry.findById(entry.id)
+  .then((currentEntry) => {
+    return currentEntry.updateOne({word: entry.word, definition: entry.definition})
+  });
 }
 
 module.exports.getAllEntries = getAllEntries;

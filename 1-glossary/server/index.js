@@ -31,14 +31,17 @@ app.post('/words', function(req, res) {
 });
 
 app.delete('/words', function(req, res) {
-  deleteEntry(req.body.id);
-  res.sendStatus(201);
+  deleteEntry(req.body.id)
+  .then(() => {
+    res.sendStatus(201);
+  })
 });
 
 app.put('/words', function(req, res) {
-  console.log(req.body.data);
-  editEntry(req.body.data);
-  res.sendStatus(201);
+  editEntry(req.body.data)
+  .then(() => {
+    res.sendStatus(201);
+  })
 });
 /****
  *
