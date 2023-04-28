@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import Account from "./account.jsx";
 
 const Checkout = () => {
-
   const [currentForm, setCurrentForm] = useState(1);
+
+  const createAccount = (info) => {
+    // create account helper function
+
+    // move to form 2
+
+  };
 
   return (
     <><h1>Checkout</h1>
@@ -14,11 +21,9 @@ const Checkout = () => {
         <li>Low shelf x 1</li>
       </ul>
       <h3>Step 1: Create an account</h3>
-      {currentForm === 1 && <div>FORM FOR YOUR ACCT INFO</div>}
+      {currentForm === 1 && <Account create={ createAccount }/>}
     </div></>
-  )
-
-
-}
+  );
+};
 
 export default Checkout;
