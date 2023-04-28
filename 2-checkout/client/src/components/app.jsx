@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Checkout from "./checkout.jsx";
-import Account from "./account.jsx";
 
 const App = () => {
 
