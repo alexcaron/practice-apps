@@ -63,4 +63,23 @@ input, select {
   display: inline;
 }
 
+.error {
+  color: orangered;
+  font-size: smaller
+}
 
+.entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.edit-button {
+  padding: 5px;
+  width: 70px;
+}

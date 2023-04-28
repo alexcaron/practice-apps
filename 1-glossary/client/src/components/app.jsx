@@ -24,7 +24,12 @@ const App = () => {
   }
 
   const checkWordsFor = (word) => {
-    return words.map(entry => entry.word).includes(word);
+    var test = words.map(entry => entry.word);
+    var test2 = word;
+    var test3 = test.includes(test2);
+    console.log("it is ", test3, " that ", test, " contains ", test2)
+    //.includes(word)
+    return test3;
   }
 
   const addWord = (word, definition) => {

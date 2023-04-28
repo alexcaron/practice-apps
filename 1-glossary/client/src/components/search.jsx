@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const Search = ({ filter }) => {
   return (
     <label>
-      <input id="word-to-add" type="search" name="word" placeholder="Search your words"/>
-      <button name="search" label="search" onClick={ () => filter(document.getElementById("word-to-add").value) }>Search</button>
+      <input id="word-to-search" type="search" name="word" placeholder="Search your words"/>
+      <button name="search" label="search" onClick={ () => filter(document.getElementById("word-to-search").value) }>Search</button>
     </label>
   )
 };

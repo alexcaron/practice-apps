@@ -14,11 +14,16 @@ const Word = ({ word, edit, deleteWord }) => {
   }
 
   return (
-    <li className="word">
-      { editing ? <><input id="word-to-update"/> - <input id="def-to-update"/></> : <><span>{word.word}</span> - <span>{word.definition}</span></> }
-      <button onClick={ () => onEdit(word) }>{ editing ? 'Submit' : 'Edit' }</button>
-      <button onClick={ () => deleteWord(word._id) }>Delete</button>
-    </li>
+    <div className="entry">
+      { editing ?
+        <div className="words"><input id="word-to-update" placeholder={word.word}/> - <input id="def-to-update" placeholder={word.definition}/></div> :
+        <div className="words"><span>{word.word}</span> - <span>{word.definition}</span></div>
+      }
+      <div className="edit-buttons">
+        <button className="edit-button" onClick={ () => onEdit(word) }>{ editing ? 'Submit' : 'Edit' }</button>
+        <button className="edit-button" onClick={ () => deleteWord(word._id) }>Delete</button>
+      </div>
+    </div>
   );
 }
 
