@@ -11,8 +11,9 @@ app.use(express.json());
 
 app.get('/words', function(req, res) {
   getAllEntries()
-  .then((entries) => {
-    res.send(entries);
+  .then(([rows]) => {
+    console.log(rows);
+    res.send(rows);
   })
   .catch((err) => {
     console.log("there was an issue getting the entries");

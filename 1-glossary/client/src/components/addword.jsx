@@ -4,7 +4,6 @@ const AddWord = ({ checkWordsFor, addWord }) => {
   const [existsAlert, setExistsAlert] = useState(false);
   const onSubmit = () => {
     const word = document.getElementById("word-to-add").value;
-    console.log(word);
     const definition = document.getElementById("def-to-add").value;
     checkWordsFor(word) ? setExistsAlert(true) : addWord(word, definition);
   }

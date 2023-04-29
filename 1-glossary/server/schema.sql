@@ -1,0 +1,7 @@
+CREATE DATABASE glossary;
+USE glossary;
+CREATE TABLE entries (
+  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  word VARCHAR(50) NULL,
+  definition VARCHAR(500) NULL
+)

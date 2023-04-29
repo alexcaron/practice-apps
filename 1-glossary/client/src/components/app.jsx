@@ -5,7 +5,6 @@ import AddWord from "./addword.jsx";
 import axios from "axios";
 
 const App = () => {
-
   const [words, setWords] = useState([]);
   const [displayWords, setDisplayWords] = useState([]);
 
@@ -23,14 +22,7 @@ const App = () => {
     setDisplayWords(words.filter((word) => word.word.includes(query) || word.definition.includes(query)));
   }
 
-  const checkWordsFor = (word) => {
-    var test = words.map(entry => entry.word);
-    var test2 = word;
-    var test3 = test.includes(test2);
-    console.log("it is ", test3, " that ", test, " contains ", test2)
-    //.includes(word)
-    return test3;
-  }
+  const checkWordsFor = (word) => words.map(entry => entry.word).includes(word);
 
   const addWord = (word, definition) => {
     const entry = { word, definition };
