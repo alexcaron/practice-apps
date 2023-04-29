@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Account from "./account.jsx";
 import Shipping from "./shipping.jsx";
+import Payment from "./payment.jsx";
 
 const Checkout = () => {
   const [currentForm, setCurrentForm] = useState(1);
@@ -11,9 +12,15 @@ const Checkout = () => {
   };
 
   const addShipping = (info) => {
-    const newFormInfo = Object.assign(formInfo, info);
-    setFormInfo(newFormInfo);
+    Object.assign(info, formInfo);
+    setFormInfo(info);
     setCurrentForm(3);
+  };
+
+  const addPayment = (info) => {
+    Object.assign(info, formInfo);
+    setFormInfo(info);
+//    setCurrentForm(3);
   };
 
   return (
@@ -29,6 +36,8 @@ const Checkout = () => {
       {currentForm === 1 && <Account create={ createAccount }/>}
       <h3>Step 2: Provide your shipping details</h3>
       {currentForm === 2 && <Shipping addShipping={ addShipping }/>}
+      <h3>Step 3: Enter your payment information</h3>
+      {currentForm === 3 && <Payment addPayment={ addPayment }/>}
     </div></>
   );
 };

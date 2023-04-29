@@ -1,8 +1,6 @@
 import React from "react";
 
-
-
-const Shipping = () => {
+const Shipping = ({ addShipping }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const fields = document.getElementById("shipping-info-form").elements;
@@ -13,7 +11,7 @@ const Shipping = () => {
       zip: fields["zip-code"].value,
       phone: fields["phone-number"].value
     }
-    console.log(shippingInfo);
+    addShipping(shippingInfo);
   }
 
   return (
