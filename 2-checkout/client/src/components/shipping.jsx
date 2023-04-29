@@ -9,7 +9,7 @@ const Shipping = ({ addShipping }) => {
       city: fields["city"].value,
       state: fields["state"].value,
       zip: fields["zip-code"].value,
-      phone: fields["phone-number"].value
+      phoneNumber: fields["phone-number"].value
     }
     addShipping(shippingInfo);
   }

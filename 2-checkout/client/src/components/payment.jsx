@@ -1,41 +1,50 @@
 import React from "react";
 
 const Payment = ({ addPayment }) => {
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const fields = document.getElementById("account-info-form").elements
-  //   const account = {
-  //     firstname: fields["first-name"].value,
-  //     lastname: fields["last-name"].value,
-  //     email: fields["email"].value,
-  //     password: fields["password"].value,
-  //   }
-  //   create(account);
-  // }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const fields = document.getElementById("payment-info-form").elements;
+    const payment = {
+      cardholderName: fields["cardholder-name"].value,
+      cardNumber: fields["card-number"].value,
+      expirationMonth: fields["card-expiration-month"].value,
+      expirationYear: fields["card-expiration-year"].value,
+      cardCVC: fields["card-cvc"].value,
+      billingZip: fields["billing-zip"].value
+    }
+    addPayment(payment);
+  };
 
   return (
-    <div>Test</div>
-    // <form id="account-info-form" className="form" onSubmit={handleSubmit}>
-    //   <div className="account-input">
-    //     <label htmlFor="first-name">First name:</label>
-    //     <input type="text" name="first-name" id="first-name" required/>
-    //   </div>
-    //   <div className="account-input">
-    //     <label htmlFor="last-name">Last name:</label>
-    //     <input type="text" name="last-name" id="last-name" required/>
-    //   </div>
-    //   <div className="account-input">
-    //     <label htmlFor="email">Email:</label>
-    //     <input type="email" name="email" id="email" required/>
-    //   </div>
-    //   <div className="account-input">
-    //     <label htmlFor="password">Choose a password:</label>
-    //     <input type="text" name="password" id="password" required/>
-    //   </div>
-    //   <div className="account-input">
-    //     <button type="submit">Next</button>
-    //   </div>
-    // </form>
+    <form id="payment-info-form" className="form" onSubmit={handleSubmit}>
+      <div className="payment-input">
+        <label htmlFor="cardholder-name">Name on card:</label>
+        <input type="text" name="cardholder-name" id="cardholder-name" required/>
+      </div>
+      <div className="payment-input">
+        <label htmlFor="card-number">Credit card number:</label>
+        <input type="text" name="card-number" id="card-number" required/>
+      </div>
+      <div className="payment-input">
+        <label htmlFor="card-expiration-month">Expiration Month:</label>
+        <input type="text" name="card-expiration-month" id="card-expiration-month" required/>
+      </div>
+      <div className="payment-input">
+        <label htmlFor="card-expiration-year">Expiration Year:</label>
+        <input type="text" name="card-expiration-year" id="card-expiration-year" required/>
+      </div>
+      <div className="payment-input">
+        <label htmlFor="card-cvc">CVC:</label>
+        <input type="text" name="card-cvc" id="card-cvc" required/>
+      </div>
+      <div className="payment-input">
+        <label htmlFor="billing-zip">Billing zip:</label>
+        <input type="text" name="billing-zip" id="billing-zip" required/>
+      </div>
+      <div className="payment-input">
+        <button type="submit">Review</button>
+      </div>
+    </form>
   );
 }
 

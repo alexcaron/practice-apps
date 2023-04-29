@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import Account from "./account.jsx";
 import Shipping from "./shipping.jsx";
 import Payment from "./payment.jsx";
+import Review from "./review.jsx";
+import axios from "axios";
 
-const Checkout = () => {
+const Checkout = ({ setStarted }) => {
   const [currentForm, setCurrentForm] = useState(1);
   const [formInfo, setFormInfo] = useState({});
+  // const [accountInfo, setAccountInfo] = useState({});
+  // const [purchaseInfo, setPurchaseInfo] = useState({});
+  console.log(currentForm);
+  console.log(formInfo);
   const createAccount = (info) => {
     setFormInfo(info);
     setCurrentForm(2);
@@ -20,8 +26,14 @@ const Checkout = () => {
   const addPayment = (info) => {
     Object.assign(info, formInfo);
     setFormInfo(info);
-//    setCurrentForm(3);
+    setCurrentForm(4);
   };
+
+  const submitPurchase = () => {
+    // send post request
+    axios.post("/purchase", formInfo);
+    setStarted(false);
+  }
 
   return (
     <><h1>Checkout</h1>
@@ -38,6 +50,7 @@ const Checkout = () => {
       {currentForm === 2 && <Shipping addShipping={ addShipping }/>}
       <h3>Step 3: Enter your payment information</h3>
       {currentForm === 3 && <Payment addPayment={ addPayment }/>}
+      {currentForm === 4 && <Review info={ formInfo } purchase={ submitPurchase }/>}
     </div></>
   );
 };

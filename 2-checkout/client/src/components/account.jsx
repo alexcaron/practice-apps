@@ -5,8 +5,8 @@ const Account = ({ create }) => {
     event.preventDefault();
     const fields = document.getElementById("account-info-form").elements
     const account = {
-      firstname: fields["first-name"].value,
-      lastname: fields["last-name"].value,
+      firstName: fields["first-name"].value,
+      lastName: fields["last-name"].value,
       email: fields["email"].value,
       password: fields["password"].value,
     }

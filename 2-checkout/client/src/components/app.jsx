@@ -12,7 +12,7 @@ const App = () => {
       </p>
       {!started ?
       <button onClick= { () => setStarted(true) }>Checkout</button> :
-      <Checkout />}
+      <Checkout setStarted={ setStarted }/>}
     </div>
   )
 }
